@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  *::before,
+  *,
+  *::after {
+    @apply text-[62.5%] m-0 p-0 bg-rose-50 box-border;
+  }
+
+  html {
+    @apply m-[2rem];
+  }
+}
