@@ -4,7 +4,7 @@ type DessertProps = {
 
 function Dessert({ children }: DessertProps) {
   return (
-    <main className="grid gap-20 bg-rose-100/50 p-[5rem] lg:grid-flow-col lg:grid-cols-[70fr_30fr]">
+    <main className="grid gap-20 bg-rose-100/50 p-[3rem] lg:grid-flow-col lg:grid-cols-[7fr,3fr]">
       {children}
     </main>
   );

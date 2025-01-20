@@ -5,9 +5,7 @@
 @tailwind utilities;
 
 @layer base {
-  *::before,
-  *,
-  *::after {
+  html {
     @apply m-0 box-border p-0 text-[62.5%];
   }
 }

@@ -1,7 +1,7 @@
-import Cart from './components/Cart';
-import Dessert from './components/Dessert';
-import DessertList from './components/DessertList';
-// import Modal from './components/Modal';
+import Cart from "./components/Cart";
+import Dessert from "./components/Dessert";
+import DessertList from "./components/DessertList";
+import OrderModal from "./components/OrderModal";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <DessertList />
         <Cart />
       </Dessert>
-      {/* <Modal /> */}
+      <OrderModal />
     </>
   );
 }
