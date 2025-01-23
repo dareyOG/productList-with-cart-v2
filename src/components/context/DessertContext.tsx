@@ -1,12 +1,7 @@
-import { createContext, useContext, useReducer } from "react";
-import {
-  Action,
-  ContextProvider,
-  DessertContext,
-  State,
-} from "../../dataTypes";
+import React, { createContext, useContext, useReducer } from "react";
+import { Action, State } from "../../dataTypes";
 
-const DessertContext = createContext<DessertContext | null>(null);
+const DessertContext = createContext<State | null>(null);
 
 const initialState: State = {
   desserts: [],
@@ -18,27 +13,37 @@ function reducer(state: State, action: Action) {
   switch (action.type) {
     case "load desserts":
       return { ...state, desserts: action.payload };
+
     case "add dessert":
       return { ...state, cartlist: [...state.cartlist, action.payload] };
+
     case "remove dessert":
       return {
         ...state,
         cartlist: [...state.cartlist].filter(
-          (cartitem) => cartitem.id !== action.payload,
+          (cartitem) => cartitem.name !== action.payload,
         ),
       };
+
     case "increase quantity":
       return {
         ...state,
-        cartlist: state.cartlist.slice().map((cartItem) =>
-          cartItem.id === action.payload
-            ? {
-                ...cartItem,
-                quantity: cartItem.quantity + 1,
-                totalPrice: cartItem.unitprice * (cartItem.quantity + 1),
-              }
-            : { ...cartItem },
-        ),
+        cartlist: state.cartlist
+          .slice()
+          .map(
+            (cartItem: {
+              name: string;
+              quantity: number;
+              unitprice: number;
+            }) =>
+              cartItem.name === action.payload
+                ? {
+                    ...cartItem,
+                    quantity: cartItem.quantity + 1,
+                    totalPrice: cartItem.unitprice * (cartItem.quantity + 1),
+                  }
+                : { ...cartItem },
+          ),
       };
 
     case "decrease quantity":
@@ -46,16 +51,21 @@ function reducer(state: State, action: Action) {
         ...state,
         cartlist: state.cartlist
           .slice()
-          .map((cartItem) =>
-            cartItem.id === action.payload
-              ? cartItem.quantity
-                ? {
-                    ...cartItem,
-                    quantity: cartItem.quantity - 1,
-                    totalprice: cartItem.unitprice * (cartItem.quantity - 1),
-                  }
-                : null
-              : cartItem,
+          .map(
+            (cartItem: {
+              name: string;
+              quantity: number;
+              unitprice: number;
+            }) =>
+              cartItem.name === action.payload
+                ? cartItem.quantity > 1
+                  ? {
+                      ...cartItem,
+                      quantity: cartItem.quantity - 1,
+                      totalprice: cartItem.unitprice * (cartItem.quantity - 1),
+                    }
+                  : null
+                : cartItem,
           )
           .filter((cartItem) => cartItem !== null),
       };
@@ -71,7 +81,11 @@ function reducer(state: State, action: Action) {
   }
 }
 
-export function DessertContextProvider({ children }: ContextProvider) {
+export function DessertContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
