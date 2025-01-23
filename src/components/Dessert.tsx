@@ -1,6 +1,4 @@
-type DessertProps = {
-  children: React.ReactNode;
-};
+import { DessertProps } from "../dataTypes";
 
 function Dessert({ children }: DessertProps) {
   return (
