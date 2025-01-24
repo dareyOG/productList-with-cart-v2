@@ -82,7 +82,7 @@ export function DessertContextProvider({
       const dessertRes = await fetch("/data/data.json");
       const dessertData = await dessertRes.json();
       const { desserts } = dessertData;
-      console.log(desserts);
+
       dispatch({ type: "load desserts", payload: desserts });
     };
     loadDesserts();

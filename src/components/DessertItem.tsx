@@ -1,4 +1,5 @@
 import { DessertItemProps } from "../dataTypes";
+import CountButton from "./CountButton";
 
 export default function DessertItem({ dessert }: DessertItemProps) {
   return (
@@ -13,10 +14,14 @@ export default function DessertItem({ dessert }: DessertItemProps) {
         />
       </picture>
       <div className="text-[1.3rem] font-semibold">
-        <button className="relative left-[50%] top-[-2.5rem] flex translate-x-[-50%] gap-5 rounded-full border-2 border-rose-300 bg-rose-50 px-10 py-4 hover:border-red hover:text-red">
-          <img src="/images/icon-add-to-cart.svg" alt="add to cart" />
-          Add to Cart
-        </button>
+        {true ? (
+          <button className="relative left-[50%] top-[-2.5rem] flex translate-x-[-50%] items-center gap-5 rounded-full border-2 border-rose-300 bg-rose-50 px-10 py-4 hover:border-red hover:text-red">
+            <img src="assets/images/icon-add-to-cart.svg" alt="add to cart" />
+            Add to Cart
+          </button>
+        ) : (
+          <CountButton />
+        )}
         <div className="text-[1.5rem]">
           <p className="font-light text-rose-400">{dessert.category}</p>
           <p>{dessert.name}</p>
