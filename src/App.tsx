@@ -12,7 +12,7 @@ function App() {
         <DessertList />
         <Cart />
       </Dessert>
-      {isModalActive && <OrderModal />}
+      {!isModalActive && <OrderModal />}
     </>
   );
 }

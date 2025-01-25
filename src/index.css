@@ -9,3 +9,9 @@
     @apply m-0 box-border p-0 text-[62.5%];
   }
 }
+
+@layer components {
+  .countBtn {
+    @apply rounded-full border-2 border-rose-100 hover:border-transparent hover:bg-rose-50 hover:text-red;
+  }
+}

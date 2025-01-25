@@ -45,7 +45,7 @@ type Dessert = {
   };
 };
 
-type CartItem = {
+export type CartItem = {
   name: string;
   image: { thumbnail: string };
   quantity: number;
