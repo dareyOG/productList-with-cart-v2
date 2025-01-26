@@ -1,18 +1,19 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { Action, ContextType, State } from "../../dataTypes";
+import { desserts } from "../../../public/data/data";
 
 const DessertContext = createContext<ContextType | null>(null);
 
 const initialState: State = {
-  desserts: [],
+  desserts,
   cartlist: [],
   isModalActive: false,
 };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case "load desserts":
-      return { ...state, desserts: action.payload };
+    /*  case "load desserts":
+      return { ...state, desserts: action.payload }; */
 
     case "add dessert":
       return { ...state, cartlist: [...state.cartlist, action.payload] };
@@ -77,7 +78,7 @@ export function DessertContextProvider({
     initialState,
   );
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const loadDesserts = async () => {
       const dessertRes = await fetch("/data/data.json");
       const dessertData = await dessertRes.json();
@@ -86,7 +87,7 @@ export function DessertContextProvider({
       dispatch({ type: "load desserts", payload: desserts });
     };
     loadDesserts();
-  }, []);
+  }, []); */
 
   return (
     <DessertContext.Provider
