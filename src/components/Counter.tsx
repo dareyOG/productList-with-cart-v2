@@ -1,9 +1,23 @@
-export default function CountButton() {
+import { Dessert } from "../dataTypes";
+import Button from "./Button";
+import { useDessert } from "./context/DessertContext";
+
+export default function CountButton({ dessert }: { dessert: Dessert }) {
+  const { cartlist } = useDessert();
+
+  const quantity = cartlist.find(
+    (cartItem) => cartItem.name === dessert.name,
+  )?.quantity;
+
   return (
-    <div className="relative top-[-2.5rem] mx-auto flex w-[54%] items-center justify-center gap-16 rounded-full bg-red px-10 py-4 text-rose-50">
-      <button className="countBtn px-2.5">&#45;</button>
-      <span>10</span>
-      <button className="countBtn px-2">&#43;</button>
+    <div className="relative top-[-2.5rem] mx-auto flex w-[54%] items-center justify-center gap-32 rounded-full bg-red px-10 py-4 text-rose-50 sm:gap-x-[3rem]">
+      <Button action={{ type: "decrease quantity", payload: dessert.name }}>
+        &#45;
+      </Button>
+      <span className="mx-auto">{quantity}</span>
+      <Button action={{ type: "increase quantity", payload: dessert.name }}>
+        &#43;
+      </Button>
     </div>
   );
 }

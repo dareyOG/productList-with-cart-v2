@@ -33,7 +33,7 @@ function reducer(state: State, action: Action): State {
             ? {
                 ...cartItem,
                 quantity: cartItem.quantity + 1,
-                totalPrice: cartItem.unitprice * (cartItem.quantity + 1),
+                totalPrice: cartItem.unitPrice * (cartItem.quantity + 1),
               }
             : { ...cartItem },
         ),
@@ -49,7 +49,7 @@ function reducer(state: State, action: Action): State {
               ? {
                   ...cartItem,
                   quantity: cartItem.quantity > 1 ? cartItem.quantity - 1 : 0,
-                  totalPrice: cartItem.unitprice * (cartItem.quantity - 1),
+                  totalPrice: cartItem.unitPrice * (cartItem.quantity - 1),
                 }
               : { ...cartItem },
           )
@@ -60,7 +60,7 @@ function reducer(state: State, action: Action): State {
       return { ...state, isModalActive: !state.isModalActive };
 
     case "start new order":
-      return { ...state, cartlist: [] };
+      return { ...state, cartlist: [], isModalActive: !state.isModalActive };
 
     default:
       throw new Error("unknown action");

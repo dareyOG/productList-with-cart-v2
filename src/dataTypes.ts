@@ -1,3 +1,23 @@
+export type Dessert = {
+  name: string;
+  category: string;
+  price: number;
+  image: {
+    thumbnail: string;
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
+};
+
+export type CartItem = {
+  name: string;
+  image: { thumbnail: string };
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+};
+
 export type State = {
   desserts: Dessert[];
   cartlist: CartItem[];
@@ -27,32 +47,4 @@ export type ContextType = {
   cartlist: CartItem[];
   isModalActive: boolean;
   dispatch: React.Dispatch<Action>;
-};
-
-export type DessertProps = {
-  children: React.ReactNode;
-};
-
-type Dessert = {
-  name: string;
-  category: string;
-  price: number;
-  image: {
-    thumbnail: string;
-    mobile: string;
-    tablet: string;
-    desktop: string;
-  };
-};
-
-export type CartItem = {
-  name: string;
-  image: { thumbnail: string };
-  quantity: number;
-  unitprice: number;
-  totalPrice: number;
-};
-
-export type DessertItemProps = {
-  dessert: Dessert;
 };

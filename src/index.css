@@ -14,4 +14,8 @@
   .countBtn {
     @apply rounded-full border-2 border-rose-100 hover:border-transparent hover:bg-rose-50 hover:text-red;
   }
+
+  .btn {
+    @apply mx-auto w-full rounded-full bg-red px-6 py-5 font-semibold capitalize text-rose-50 hover:bg-rose-900 hover:opacity-95;
+  }
 }

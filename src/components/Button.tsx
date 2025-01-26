@@ -1,22 +1,73 @@
+import React from "react";
 import { Action } from "../dataTypes";
 import { useDessert } from "./context/DessertContext";
 
-export default function Button({ action, textContent }:{action:Action, textContent:string}) {
+export default function Button({
+  children,
+  action,
+}: {
+  children: string | React.ReactNode;
+  action: Action;
+}) {
   const { dispatch } = useDessert();
 
-  if (action.type === "add dessert" && textContent === "Add to Cart"){
-    const 
+  const handleClick = () => {
+    dispatch(action);
+  };
+
+  if (action.type === "add dessert") {
+    return (
+      <button
+        className="relative left-[50%] top-[-2.5rem] z-10 flex translate-x-[-50%] items-center gap-5 rounded-full border-2 border-rose-300 bg-rose-50 px-10 py-4 hover:border-red hover:text-red"
+        onClick={handleClick}
+      >
+        <img src="assets/images/icon-add-to-cart.svg" alt="add to cart" />
+        Add to Cart
+      </button>
+    );
   }
-    const handleClick = () => {
-      dispatch();
-    };
-  return <button onClick={handleClick} className=""></button>;
-}
 
-{
-  /* <button className="mx-auto w-full rounded-full bg-red px-6 py-5 text-[1.2rem] font-semibold capitalize text-rose-50 hover:bg-rose-900 hover:opacity-95">
-          confirm order
-        </button> */
-}
+  if (action.type === "remove dessert") {
+    return (
+      <button
+        className="rounded-full border-2 border-rose-300 p-[0.2rem] hover:border-rose-500"
+        onClick={handleClick}
+      >
+        {children}
+      </button>
+    );
+  }
 
-/* mx-auto w-full rounded-full bg-red px-6 py-5 text-[1.2rem] font-semibold capitalize text-rose-50 hover:bg-rose-900 hover:opacity-95 */
+  if (action.type === "decrease quantity") {
+    return (
+      <button className="countBtn px-2.5" onClick={handleClick}>
+        {children}
+      </button>
+    );
+  }
+
+  if (action.type === "increase quantity") {
+    return (
+      <button className="countBtn px-2" onClick={handleClick}>
+        {children}
+      </button>
+    );
+  }
+
+  if (action.type === "confirm order") {
+    return (
+      <button className="btn text-[1.2rem]" onClick={handleClick}>
+        {children}
+      </button>
+    );
+  }
+
+  if (action.type === "start new order") {
+    return (
+      <button className="btn text-[1.5rem]" onClick={handleClick}>
+        {children}
+      </button>
+    );
+  }
+  return null;
+}
