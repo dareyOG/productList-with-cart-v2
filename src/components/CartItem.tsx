@@ -1,5 +1,6 @@
-import { CartItem as CartItemProps } from "../dataTypes";
 import Button from "./Button";
+import { CartItem as CartItemProps } from "../dataTypes";
+import { formatCurrency } from "../utils/help";
 
 export default function CartItem({ cartItem }: { cartItem: CartItemProps }) {
   return (
@@ -10,9 +11,13 @@ export default function CartItem({ cartItem }: { cartItem: CartItemProps }) {
           <span className="font-bold text-red">{cartItem.quantity}&times;</span>
           <span className="space-x-1 font-normal">
             <span>@</span>
-            <span className="font-medium">{cartItem.unitPrice}</span>
+            <span className="font-medium">
+              {formatCurrency(cartItem.unitPrice)}
+            </span>
           </span>
-          <span className="font-semibold">{cartItem.totalPrice}</span>
+          <span className="font-semibold">
+            {formatCurrency(cartItem.totalPrice)}
+          </span>
         </div>
       </div>
       <Button action={{ type: "remove dessert", payload: cartItem }}>

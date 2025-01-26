@@ -1,5 +1,5 @@
-import { Dessert } from "../dataTypes";
 import Button from "./Button";
+import { Dessert } from "../dataTypes";
 import { useDessert } from "./context/DessertContext";
 
 export default function CountButton({ dessert }: { dessert: Dessert }) {
@@ -10,7 +10,7 @@ export default function CountButton({ dessert }: { dessert: Dessert }) {
   )?.quantity;
 
   return (
-    <div className="relative top-[-2.5rem] mx-auto flex w-[54%] items-center justify-center gap-32 rounded-full bg-red px-10 py-4 text-rose-50 sm:gap-x-[3rem]">
+    <div className="relative top-[-2.5rem] mx-auto flex w-[54%] items-center justify-center gap-10 rounded-full bg-red px-10 py-4 text-rose-50 sm:gap-x-[3rem]">
       <Button action={{ type: "decrease quantity", payload: dessert.name }}>
         &#45;
       </Button>

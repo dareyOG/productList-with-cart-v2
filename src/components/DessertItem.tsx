@@ -1,10 +1,11 @@
-import { Dessert } from "../dataTypes";
 import Button from "./Button";
 import Counter from "./Counter";
+import { Dessert } from "../dataTypes";
 import { useDessert } from "./context/DessertContext";
+import { formatCurrency } from "../utils/help";
 
 export default function DessertItem({ dessert }: { dessert: Dessert }) {
-  const { desserts, cartlist } = useDessert();
+  const { cartlist } = useDessert();
 
   const isAddedToCartlist = cartlist
     .map((cartItem) => cartItem.name)
@@ -25,7 +26,7 @@ export default function DessertItem({ dessert }: { dessert: Dessert }) {
         <source media="(min-width:1024px)" srcSet={dessert.image.desktop} />
         <img
           src={dessert.image.mobile}
-          alt={dessert.name}
+          alt={`dessert-${dessert.name}`}
           className="h-[20rem] w-full rounded-[1.2rem] border-2 border-transparent object-cover md:h-[25rem]"
         />
       </picture>
@@ -41,7 +42,7 @@ export default function DessertItem({ dessert }: { dessert: Dessert }) {
         <div className="text-[1.5rem] text-rose-900">
           <p className="font-light text-rose-400">{dessert.category}</p>
           <p>{dessert.name}</p>
-          <p className="text-red">{dessert.price}</p>
+          <p className="text-red">{formatCurrency(dessert.price)}</p>
         </div>
       </div>
     </li>

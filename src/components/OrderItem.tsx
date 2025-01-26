@@ -1,4 +1,5 @@
 import { CartItem } from "../dataTypes";
+import { formatCurrency } from "../utils/help";
 
 export default function OrderItem({ orderItem }: { orderItem: CartItem }) {
   return (
@@ -13,19 +14,20 @@ export default function OrderItem({ orderItem }: { orderItem: CartItem }) {
           className="w-full rounded-lg"
         />
       </div>
-      <div className="flex w-[10rem] flex-col justify-between gap-y-1">
+      <div className="flex w-[16.5rem] flex-col justify-between gap-y-1">
         <p className="truncate font-semibold">{orderItem.name}</p>
-        <div className="space-x-[0.5rem]">
+        <div className="space-x-10">
           <span className="font-semibold text-red">
             {orderItem.quantity}&times;
           </span>
-          <span className="font-light text-rose-300">
-            @ {orderItem.unitprice}
+          <span className="space-x-1 font-semibold text-rose-300">
+            <span>@</span>
+            <span> {formatCurrency(orderItem.unitPrice)}</span>
           </span>
         </div>
       </div>
       <div className="flex place-items-center font-semibold">
-        {orderItem.totalPrice}
+        {formatCurrency(orderItem.totalPrice)}
       </div>
     </li>
   );

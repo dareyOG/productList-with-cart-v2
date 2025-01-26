@@ -24,5 +24,3 @@ dist-ssr
 *.sw?
 
 product-list-with-cart-main
-
-src/utils

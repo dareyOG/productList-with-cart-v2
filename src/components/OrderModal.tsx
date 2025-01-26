@@ -11,7 +11,7 @@ export default function OrderModal() {
   return (
     <>
       <div className="fixed inset-0 z-20 bg-rose-900 opacity-70 brightness-0"></div>
-      <section className="left- fixed top-[10rem] z-20 w-full rounded-[2rem] border border-transparent bg-rose-50 p-12 backdrop-brightness-0 md:left-[50%] md:top-[7rem] md:max-h-[50rem] md:w-[50rem] md:translate-x-[-50%]">
+      <section className="fixed left-0 top-[10rem] z-20 w-full rounded-[2rem] border border-transparent bg-rose-50 p-12 backdrop-brightness-0 md:left-[50%] md:top-[7rem] md:max-h-[50rem] md:w-[50rem] md:translate-x-[-50%] md:translate-y-[50%] lg:translate-y-[15%]">
         <img
           src="assets/images/icon-order-confirmed.svg"
           alt="confirmed order"
